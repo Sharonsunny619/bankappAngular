@@ -1,0 +1,34 @@
+<form (ngSubmit)="register()" [formGroup]="registerForm">
+    <div class="container w-25 border  mt-5 p-3" style="background:rgba(57, 87, 77, 0.331)">
+        <h1 class="text-center text-white">REGISTER PAGE</h1>
+        <div class="mt-2 p-2">
+            <input type="text" name="uname" formControlName="uname" placeholder="username" class="form-control" id="uid">
+
+        </div>
+        <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched">
+            <p class="text-danger">incorrect username</p>
+
+        </div>
+        <div class="mt-2 p-2">
+            <input type="text" name="acno" formControlName="acno"  placeholder="acc number" id="acno" class="form-control">
+
+        </div>
+        <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('uname')?.touched">
+            <p class="text-danger">incorrect account number</p>
+
+        </div>
+        <div class="mt-2 p-2">
+            <input type="password" name="psw" formControlName="psw"  placeholder="password" id="psw" class="form-control">
+ 
+        </div>
+        <div *ngIf="this.registerForm.get('psw')?.errors && this.registerForm.get('psw')?.touched">
+            <p class="text-danger">incorrect password</p>
+
+        </div>
+        <div class="text-center mt-2 p-2">
+            <button type="submit"  class="btn btn-success">SIGNUP</button> <br> <br>
+            <p class="text-white">already registered user? <a routerLink='' style="text-decoration: none;">LOGIN</a></p>
+       </div>
+
+    </div>
+</form> 

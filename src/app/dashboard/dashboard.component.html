@@ -1,0 +1,90 @@
+<h1 class="text-whitw p-4"> WELCOME {{user}}</h1>
+<h1 class="text-whitw p-4">{{dateandtime|date:'short'}}</h1>
+<div>
+    <a style="background:rgba(57, 87, 77, 0.331); border-radius: 30px; text-decoration: none; color: aliceblue;" class="p-4 ms-3 border border-white" routerLink="/transaction">VIEW TRANSACTION</a>
+</div>
+<div class="text-end p-3">
+    <button (click)="logout()" class="btn btn-outline-danger">LOGOUT</button>
+
+</div>
+<div class="text-end p-3">
+    <button (click)="deleteconfirm()" class="btn btn-outline-danger">DELETE</button>
+
+</div>
+<app-deleteconfirm (ondelete)="delete($event)" (oncancel)="oncancel()" [item]="acno"></app-deleteconfirm>
+
+
+
+
+<form [ngClass]="acno?'style':''" (ngSubmit)="deposit()" [formGroup]="depositForm">
+    <div class="container w-50 border mt-5 p-3" style="background:rgba(57, 87, 77, 0.331); border-radius: 30px;">
+        <h1 class="text-center text-white">DEPOSIT</h1>
+        <div class="mt-2 p-2">
+            <input type="text" name="acno" formControlName="acno"  placeholder="acc number" id="acid" class="form-control">
+
+        </div>
+        <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched">
+            <p class="text-danger">incorrect account number</p>
+
+        </div>
+        <div class="mt-2 p-2">
+            <input type="password" name="psw" formControlName="psw"  placeholder="password" id="pid" class="form-control">
+ 
+        </div>
+        <div *ngIf="this.depositForm.get('psw')?.errors && this.depositForm.get('psw')?.touched">
+            <p class="text-danger">incorrect password</p>
+
+        </div>
+        <div class="mt-2 p-2">
+            <input type="password" name="amount" formControlName="amnt"  placeholder="amount" id="aid" class="form-control">
+ 
+        </div>
+        <div *ngIf="this.depositForm.get('amnt')?.errors && this.depositForm.get('amnt')?.touched">
+            <p class="text-danger">incorrect amount</p>
+
+        </div>
+        <div class="text-center mt-2 p-2">
+            <button type="submit" class="btn btn-outline-success">DEPOSIT</button> <br> <br>
+          
+       </div>
+
+
+    </div>
+</form>
+
+<form [ngClass]="acno?'style':''" (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
+    <div class="container w-50 border mt-5 p-3" style="background:rgba(57, 87, 77, 0.331);  border-radius: 30px;">
+        <h1 class="text-center text-white">WITHDRAW</h1>
+        <div class="mt-2 p-2">
+            <input type="text" name="acno1" formControlName="acno1"  placeholder="acc number" id="acid1" class="form-control">
+
+        </div>
+        <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched">
+            <p class="text-danger">incorrect account number</p>
+
+        </div>
+        <div class="mt-2 p-2">
+            <input type="password" name="psw1" formControlName="psw1"  placeholder="password" id="pid1" class="form-control">
+ 
+        </div>
+        <div *ngIf="this.withdrawForm.get('psw1')?.errors && this.withdrawForm.get('psw1')?.touched">
+            <p class="text-danger">incorrect password</p>
+
+        </div>
+        <div class="mt-2 p-2">
+            <input type="text" name="amount1" formControlName="amnt1"  placeholder="amount" id="aid1" class="form-control">
+ 
+        </div>
+        <div *ngIf="this.withdrawForm.get('amnt1')?.errors && this.withdrawForm.get('amnt1')?.touched">
+            <p class="text-danger">incorrect amount</p>
+
+        </div>
+        <div class="text-center mt-2 p-2">
+            <button type="submit" class="btn btn-outline-success">WITHDRAW</button> <br> <br>
+            
+
+       </div>
+
+
+    </div>
+</form>
